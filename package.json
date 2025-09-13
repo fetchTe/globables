@@ -1,6 +1,6 @@
 {
   "name": "globables",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI/ENV constants for Node.js-like runtimes, supports: Node.js, Deno, Bun, QuickJS, and QuickJS-NG",
   "homepage": "https://github.com/fetchTe/globables",
   "license": "MIT",
