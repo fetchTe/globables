@@ -64,8 +64,8 @@ jobs:
       - name: make::install
         run : make install
 
-      - name: make::build
-        run : make build
+      - name: make::release
+        run : make release
 
       - name: create::compressed archive
         env:
