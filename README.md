@@ -1,13 +1,6 @@
 # GlobAbles
 
-A helper CLI/ENV helper package for Node.js-like runtimes & environments that supports: [Node.js](https://nodejs.org/), [Deno](https://deno.com/), [Bun](https://bun.sh/), [QuickJS](https://bellard.org/quickjs/), and [QuickJS-NG](https://quickjs-ng.github.io/quickjs/)
-
-+ `ARGV` - [command-line arguments](https://nodejs.org/api/process.html#processargv)
-+ `ENV` - [process environment](https://nodejs.org/api/process.html#processenv) 
-+ `GLOBAL_THIS` - [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) object; pollyfill'ed if prehistoric node <12 version
-
-
-#### ▎QUICK START
+CLI/ENV constants for Node.js-like runtimes, supports: [Node.js](https://nodejs.org/), [Deno](https://deno.com/), [Bun](https://bun.sh/), [QuickJS](https://bellard.org/quickjs/), and [QuickJS-NG](https://quickjs-ng.github.io/quickjs/)
 
 ```ts
 import {
@@ -18,6 +11,12 @@ import {
 
 GLOBAL_THIS.console.log(`Shellin with ${ENV['SHELL']} and commandin ${ARGV.join(', ')}`);
 ```
+> ╸`ARGV` - [command-line arguments](https://nodejs.org/api/process.html#processargv)<br/>
+> ╸`ENV` - [process environment](https://nodejs.org/api/process.html#processenv) <br/>
+> ╸`GLOBAL_THIS` - [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) object; pollyfill'ed if missing, such as prehistoric node <12 versions<br/>
+
+
+<br/>
 
 
 #### ▎INSTALL
@@ -31,16 +30,19 @@ yarn add globables
 ```
 
 
+
 ## Development/Contributing
 
-Contributions, pull requests, and suggestions are appreciated. Test any changes such as adding a new env which requires the following runtimes to be installed: [Node.js](https://nodejs.org/), [Bun](https://bun.sh), [Deno](https://deno.com), [QuickJS-NG](https://quickjs-ng.github.io/quickjs/) and [Make](https://www.gnu.org/software/make/manual/make.html)
+Contributions, pull requests, and suggestions are appreciated. The following runtimes must be installed for you to test any changes and/or add additional tests: [Node.js](https://nodejs.org/), [Bun](https://bun.sh), [Deno](https://deno.com), [QuickJS-NG](https://quickjs-ng.github.io/quickjs/) and [Make](https://www.gnu.org/software/make/manual/make.html)
 
 
 ### ▎PULL REQUEST STEPS
 
-1. Commit changes/code
-2. Run `make release` to clean, setup, build, lint, and test
-3. If everything checks out, push branch to repository and submit pull request
+1. Clone repository
+2. Create and switch to a new branch for your work
+3. Make and commit changes
+4. Run `make release` to clean, setup, build, lint, and test
+5. If everything checks out, push branch to repository and submit pull request
 
 
 #### ▎MAKEFILE REFERENCE

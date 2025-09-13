@@ -1,10 +1,10 @@
 {
   "name": "globables",
   "version": "1.0.0",
-  "description": "a node package",
+  "description": "CLI/ENV constants for Node.js-like runtimes, supports: Node.js, Deno, Bun, QuickJS, and QuickJS-NG",
   "homepage": "https://github.com/fetchTe/globables",
   "license": "MIT",
-  "keywords": ["node", "bun-make"],
+  "keywords": ["cli", "env", "argv", "globalThis", "Node.js", "Deno", "Bun", "QuickJS", "QuickJS-NG"],
   "files": ["dist"],
   "type": "module",
   "main": "./dist/index.cjs",
