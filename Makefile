@@ -24,7 +24,9 @@ all: help
 # source dir
 SRC = $(CURDIR)/src
 # entrypoint
+# ESB = $(SRC)/index.ts
 ENT = $(SRC)/index.ts
+# ENT = $(SRC)/index.ts
 
 # build/output dir
 DST = $(CURDIR)/dist
@@ -88,7 +90,7 @@ BFLG_SHR= --bundle
 # bun build lib (non-min) flags (*.{js,cjs,mjs})
 BFLG_LIB= --sourcemap=linked
 # bun build min flags (*.min.{js,cjs,mjs})
-BFLG_MIN= --minify --sourcemap=none
+BFLG_MIN= --minify
 
 
 #------------------------------------------------------------------------------#
@@ -154,10 +156,6 @@ IS_TEST = $$([ "$(ENV)" = "TEST" ] && echo 1 || echo $(TEST))
 #------------------------------------------------------------------------------#
 # @id::release
 #------------------------------------------------------------------------------#
-.PHONY: run
-run: ## executes entry-point (./src/index.ts) via 'bun run'
-	@$(BIN_BUN) run $(_WFLG) $(ENT)
-
 .PHONY:release
 release: ## clean, setup, build, lint, test, aok (everything but the kitchen sink)
 	@$(MAKE) MSG="release" LEN="-1" _init
@@ -257,7 +255,13 @@ _bun_factory: # private bun factory
 .PHONY: _bun_code_factory
 _bun_code_factory: # private bun code build (wrapper) factory
 	@[ "$(_BIIF)" == "iife" ] && [ "$(_BIIF)" != "$(_BFMT)" ] && exit 0 || true
-	@$(MAKE) _BPOS="build" _BOUT="--format $(_BFMT) --entry-naming \"[dir]/[name].$(_BEXE)\" --entrypoints $(ENT) --outdir \"$(DST)\"" _bun_factory
+	@"$(BIN)/esbuild" --target=node10 --platform=node \
+		$(_BFLG) $(BFLG_SHR) \
+		--format=$(_BFMT) \
+		--out-extension:.js=.$(_BEXE) \
+		--entry-names="[dir]/[name]" \
+		--outdir="$(DST)" \
+		$(ENT)
 
 
 #------------------------------------------------------------------------------#
