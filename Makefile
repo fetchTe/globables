@@ -361,7 +361,7 @@ NL = \n# new line (helps read-ability)
 
 .PHONY: help
 help: ## displays (this) help screen
-	@printf "$(BW)#$(CR)$(FW) USAGE$(CR) $(FD)(globables)$(CR)$(NL)"
+	@printf "$(BW)#$(CR)$(FW) USAGE$(CR) $(FD)($$(npm pkg get name)v$$(npm pkg get version))$(CR)$(NL)"
 	@printf "   $(FC)make$(CR) $(FY)[flags...]$(CR) $(FB)<target>$(CR)$(NL)$(NL)"
 	@printf "$(BW)#$(CR)$(FW) TARGET$(CR)$(NL)"
 	@$(BIN_AWK) --posix '/^# *@id::/ { printf "$(FD)  -------------------$(CR)$(NL)"  } \
