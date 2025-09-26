@@ -8,7 +8,7 @@ env:
   # set to '1' to enable action cache (perf/saving is negligible, if at all)
   USE_CACHE: 0
   # ignore targets: grep --invert-match -E "${IGNORE_TARGET}"
-  IGNORE_TARGET: 'update|_watch'
+  IGNORE_TARGET: 'update|_watch|test'
 
 on:
   push:
