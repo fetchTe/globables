@@ -50,7 +50,7 @@ export const ARGV: NodeJS.Process['argv'] = /* @__PURE__ */ (() =>
       : process['argv']
     ) ?? []
 )();
-
+export const ARGS = ARGV;
 
 /**
  * process environment (ENV) variables
