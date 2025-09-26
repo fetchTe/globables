@@ -7,6 +7,7 @@
 
 ### ▎Changed
 + Replace `bun` with `esbuild` for all Makefile `build` targets
++ Remove `on-makefile-change.yml` workflow
 
 
 ## [`v1.0.1`](https://github.com/fetchTe/globables/releases/tag/v1.0.1) - `2025-09-13`
