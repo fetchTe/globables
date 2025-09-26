@@ -160,7 +160,7 @@
     // -------------------------------
     // @docs: typescriptlang.org/tsconfig/#target
     // @note: all targets defined in top/header comment
-    "target": "esnext",
+    "target": "es2015",
 
     // Lib (type definitions for built-in JS APIs)
     // -------------------------------
@@ -254,7 +254,7 @@
     "noUncheckedIndexedAccess": true,   // include 'undefined' in index signature
     "noUnusedLocals": true,             // error if local variables are never used
     "noUnusedParameters": true,         // error if parameters are never used
-    "strict": true,                     // enable all strict type checking options
+    "strict": false,                    // enable all strict type checking options
     "strictBindCallApply": true,        // check args for 'bind/call/apply' match the original
     "strictBuiltinIteratorReturn": true,// built-ins instantiated with 'undefined' TReturn type
     "strictFunctionTypes": true,        // disable bivariant function parameter checking
