@@ -1,4 +1,14 @@
-# GlobAbles
+<h1>
+GlobAbles
+<a href="https://mibecode.com">
+  <img align="right" title="&#8805;95% Human Code" alt="&#8805;95% Human Code" src="https://mibecode.com/badge.svg" />
+</a>
+&nbsp;
+<img align="right" alt="NPM Version" src="https://img.shields.io/npm/v/globables?color=white" />
+&nbsp;
+<img align="right"  alt="Node LTS" src="https://img.shields.io/node/v-lts/globables?color=%23962eff">
+</h1>
+
 
 CLI/ENV constants for Node.js-like runtimes, supports: [Node.js](https://nodejs.org/), [Deno](https://deno.com/), [Bun](https://bun.sh/), [QuickJS](https://bellard.org/quickjs/), and [QuickJS-NG](https://quickjs-ng.github.io/quickjs/)
 
