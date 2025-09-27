@@ -1,6 +1,6 @@
 {
   "name": "globables",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CLI/ENV constants for Node.js-like runtimes, supports: Node.js, Deno, Bun, QuickJS, and QuickJS-NG",
   "homepage": "https://github.com/fetchTe/globables",
   "license": "MIT",
@@ -16,16 +16,16 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@eslint/js": "9.35.0",
-    "@stylistic/eslint-plugin": "5.3.1",
-    "@types/bun": "1.2.21",
+    "@eslint/js": "9.36.0",
+    "@stylistic/eslint-plugin": "5.4.0",
+    "@types/bun": "1.2.22",
     "@types/eslint": "9.6.1",
-    "@types/node": "24.3.3",
-    "@typescript-eslint/parser": "8.43.0",
-    "esbuild":  "0.25.10",
-    "eslint": "9.35.0",
+    "@types/node": "24.5.2",
+    "@typescript-eslint/parser": "8.44.1",
+    "esbuild": "0.25.10",
+    "eslint": "9.36.0",
     "typescript": "5.9.2",
-    "typescript-eslint": "8.43.0"
+    "typescript-eslint": "8.44.1"
   },
   "exports": {
     ".": {
