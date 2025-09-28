@@ -254,7 +254,7 @@ _bun_factory: # private bun factory
 
 .PHONY: _bun_code_factory
 _bun_code_factory: # private bun code build (wrapper) factory
-	@[ "$(_BIIF)" == "iife" ] && [ "$(_BIIF)" != "$(_BFMT)" ] && exit 0 || true
+	@[ "$(_BIIF)" = "iife" ] && [ "$(_BIIF)" != "$(_BFMT)" ] && exit 0 || true
 	@"$(BIN)/esbuild" --target=node10 --platform=node \
 		$(_BFLG) $(BFLG_SHR) \
 		--format=$(_BFMT) \
