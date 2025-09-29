@@ -78,3 +78,60 @@ export const ENV = /* @__PURE__ */ (() => typeof process === 'undefined'
       return {};
     })())
 )() as ProcessEnv;
+
+
+/**
+ * detects if running in the Bun runtime
+ * @see {@link https://bun.sh/docs/api/globals|Bun globals}
+ */
+export const IS_BUN: boolean = /* @__PURE__ */ (() =>
+  !!(GLOBAL_THIS as never)?.['Bun']
+)();
+
+
+/**
+ * detects if running in the Deno runtime
+ * @see {@link https://docs.deno.com/api/deno/~/Deno|Deno}
+ */
+export const IS_DENO: boolean = /* @__PURE__ */ (() =>
+  !!(GLOBAL_THIS as never)?.['Deno']
+)();
+
+
+/**
+ * detects if running in the QuickJs runtime
+ * @see {@link https://quickjs-ng.github.io/quickjs/stdlib/#globals}
+ */
+export const IS_QUICKJS: boolean = /* @__PURE__ */ (() =>
+  typeof scriptArgs !== 'undefined'
+)();
+
+
+/**
+ * detects if running in Node.js
+ * @see {@link https://nodejs.org/api/process.html#processversions|process.versions docs}
+ */
+export const IS_NODE: boolean = /* @__PURE__ */ (() =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  !!(GLOBAL_THIS as any)?.['process']?.versions?.node
+)();
+
+
+/**
+ * detects if running inside Cloudflare Workers
+ * - Workers expose 'WebSocketPair' and lack 'navigator'
+ * @see {@link https://developers.cloudflare.com/workers/runtime-apis/websockets}
+ */
+export const IS_CLOUDFLARE_WORKER: boolean = /* @__PURE__ */ (() =>
+  typeof (GLOBAL_THIS as never)?.['WebSocketPair'] === 'function'
+  && typeof (GLOBAL_THIS as never)?.['navigator'] === 'undefined'
+)();
+
+
+/**
+ * detects if running inside Vercel Edge
+ * @see {@link https://vercel.com/docs/functions/runtimes/edge#check-if-you're-running-on-the-edge-runtime}
+ */
+export const IS_VERCEL_EDGE: boolean = /* @__PURE__ */ (() =>
+  !!(GLOBAL_THIS as never)?.['EdgeRuntime']
+)();

@@ -17,6 +17,14 @@ import {
   ARGV,
   ENV,
   GLOBAL_THIS,
+  // is* runtime helpers
+  IS_BUN,
+  IS_DENO,
+  IS_NODE,
+  IS_QUICKJS,
+  // is_* service helpers
+  IS_CLOUDFLARE_WORKER,
+  IS_VERCEL_EDGE,
 }  from 'globables';
 
 GLOBAL_THIS.console.log(`Shellin with ${ENV['SHELL']} and commandin ${ARGV.join(', ')}`);
