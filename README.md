@@ -31,8 +31,10 @@ GLOBAL_THIS.console.log(`Shellin with ${ENV['SHELL']} and commandin ${ARGV.join(
 ```
 > ╸`ARGV` - [command-line arguments](https://nodejs.org/api/process.html#processargv) (includes an export alias of `ARGS`)<br/>
 > ╸`ENV` - [process environment](https://nodejs.org/api/process.html#processenv) <br/>
+> ━╸ **QuickJS**: only works with `qjs --std -m` not `qjs --std -c`<br />
 > ╸`GLOBAL_THIS` - [`globalThis`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis) object; pollyfill'ed if missing, like prehistoric node <12<br/>
 > ╸ All Runtimes/Globals Tested -> [./src/index.test.ts](https://github.com/fetchTe/globables/blob/master/src/index.test.ts)<br/>
+
 
 
 <br/>

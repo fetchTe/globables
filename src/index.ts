@@ -62,7 +62,8 @@ export const ARGS = ARGV;
 export const ENV = /* @__PURE__ */ (() => typeof process === 'undefined'
   // @ts-expect-error quickjs std
   ? typeof (GLOBAL_THIS as never)?.['std']?.getenviron === 'function'
-    // @ts-expect-error quickjs std
+    // @ts-expect-error quickjs std -> only works via 'qjs --std  --module <file>'
+    // if 'qjs --std --compile <file>'; 'getenviron' is only accessible via: import * as std from 'qjs:std'
     ? ((GLOBAL_THIS as never)['std'].getenviron?.() ?? {})
     : {}
   : (!(GLOBAL_THIS as never)?.['Deno']
