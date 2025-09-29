@@ -1,3 +1,11 @@
+## [`v3.1.0`](https://github.com/fetchTe/globables/releases/tag/v3.1.0) - `2025-09-29`
+
+### ▎Added
++ `IS_*` runtime helpers: `IS_BUN`, `IS_DENO`, `IS_NODE`, `IS_QUICKJS`
++ `IS_*` service helpers: `IS_CLOUDFLARE_WORKER`, `IS_VERCEL_EDGE`
+
+
+
 ## [`v3.0.0`](https://github.com/fetchTe/globables/releases/tag/v3.0.0) - `2025-09-28`
 
 ### ▎BREAKING
