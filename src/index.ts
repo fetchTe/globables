@@ -114,7 +114,7 @@ export const IS_QUICKJS: boolean = /* @__PURE__ */ (() =>
  */
 export const IS_NODE: boolean = /* @__PURE__ */ (() =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  !!(GLOBAL_THIS as any)?.['process']?.versions?.node
+  !IS_BUN && !IS_DENO && !!(GLOBAL_THIS as any)?.['process']?.versions?.node
 )();
 
 
