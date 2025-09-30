@@ -49,6 +49,22 @@ const cli = (
   return res;
 };
 
+type IsIt = {
+  b: number;
+  d: number;
+  n: number;
+  q: number;
+  c: number;
+  v: number;
+};
+const toIs = (is: Partial<IsIt>) => `
+IS_BUN: ${!!is.b}
+IS_DENO: ${!!is.d}
+IS_NODE: ${!!is.n}
+IS_QUICKJS: ${!!is.q}
+IS_CLOUDFLARE_WORKER: ${!!is.c}
+IS_VERCEL_EDGE: ${!!is.v}
+`.trim();
 
 beforeAll(() => {
   fs.writeFileSync(
@@ -58,6 +74,12 @@ beforeAll(() => {
 console.log(\`GLOBAL_THIS: \${!!GLOBAL_THIS.console.log}\`);
 console.log(\`ENV: \${ENV['YOLO']}\`);
 console.log(\`ARGV: \${ARGV.join(' ')}\`);
+console.log(\`IS_BUN: \${IS_BUN}\`);
+console.log(\`IS_DENO: \${IS_DENO}\`);
+console.log(\`IS_NODE: \${IS_NODE}\`);
+console.log(\`IS_QUICKJS: \${IS_QUICKJS}\`);
+console.log(\`IS_CLOUDFLARE_WORKER: \${IS_CLOUDFLARE_WORKER}\`);
+console.log(\`IS_VERCEL_EDGE: \${IS_VERCEL_EDGE}\`);
     `,
   );
 });
@@ -85,18 +107,21 @@ describe('node', () => {
     const res = cli(`node ${TEST}`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('GLOBAL_THIS: true');
+    expect(res.stdout).toInclude(toIs({n: 1}));
   });
 
   test('ENV works', () => {
     const res = cli(`node ${TEST}`, {env: { YOLO: 'TEST' }});
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('ENV: TEST');
+    expect(res.stdout).toInclude(toIs({n: 1}));
   });
 
   test('ARGV works', () => {
     const res = cli(`node ${TEST} --yolo`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('--yolo');
+    expect(res.stdout).toInclude(toIs({n: 1}));
   });
 });
 
@@ -106,18 +131,22 @@ describe('bun', () => {
     const res = cli(`bun run ${TEST}`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('GLOBAL_THIS: true');
+    expect(res.stdout).toInclude('IS_BUN: true');
+    expect(res.stdout).toInclude(toIs({b: 1}));
   });
 
   test('ENV works', () => {
     const res = cli(`bun run ${TEST}`, {env: { YOLO: 'TEST' }});
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('ENV: TEST');
+    expect(res.stdout).toInclude(toIs({b: 1}));
   });
 
   test('ARGV works', () => {
     const res = cli(`bun run ${TEST} --yolo`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('--yolo');
+    expect(res.stdout).toInclude(toIs({b: 1}));
   });
 });
 
@@ -127,18 +156,21 @@ describe('qjs - quickjs', () => {
     const res = cli(`qjs -m ${TEST}`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('GLOBAL_THIS: true');
+    expect(res.stdout).toInclude(toIs({q: 1}));
   });
 
   test('ENV works', () => {
     const res = cli(`qjs --std -m ${TEST}`, {env: { YOLO: 'TEST' }});
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('ENV: TEST');
+    expect(res.stdout).toInclude(toIs({q: 1}));
   });
 
   test('ARGV works', () => {
     const res = cli(`qjs --std -m ${TEST} --yolo`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('--yolo');
+    expect(res.stdout).toInclude(toIs({q: 1}));
   });
 });
 
@@ -148,18 +180,21 @@ describe('deno --allow-env', () => {
     const res = cli(`deno run --allow-env ${TEST}`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('GLOBAL_THIS: true');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 
   test('ENV works', () => {
     const res = cli(`deno run --allow-env ${TEST}`, {env: { YOLO: 'TEST' }});
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('ENV: TEST');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 
   test('ARGV works', () => {
     const res = cli(`deno run --allow-env ${TEST} --yolo`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('--yolo');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 });
 
@@ -169,17 +204,21 @@ describe('deno --allow-all', () => {
     const res = cli(`deno run --allow-all ${TEST}`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('GLOBAL_THIS: true');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 
   test('ENV works', () => {
     const res = cli(`deno run --allow-all ${TEST}`, {env: { YOLO: 'TEST' }});
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('ENV: TEST');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 
   test('ARGV works', () => {
     const res = cli(`deno run --allow-all ${TEST} --yolo`);
     expect(res.ok).toBe(true);
     expect(res.stdout).toInclude('--yolo');
+    expect(res.stdout).toInclude(toIs({d: 1}));
   });
 });
+
