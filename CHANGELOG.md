@@ -1,4 +1,4 @@
-## [`v3.1.0`](https://github.com/fetchTe/globables/releases/tag/v3.1.0) - `2025-09-29`
+## [`v3.2.0`](https://github.com/fetchTe/globables/releases/tag/v3.2.0) - `2025-09-30`
 
 ### ▎Added
 + `IS_*` runtime helpers: `IS_BUN`, `IS_DENO`, `IS_NODE`, `IS_QUICKJS`
